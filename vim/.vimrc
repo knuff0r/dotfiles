@@ -40,3 +40,5 @@ filetype plugin indent on
 syntax on
 set omnifunc=syntaxcomplete#Complete
 set number
+
+au BufNewFile,BufRead * if &syntax == '' | setf dosini | endif

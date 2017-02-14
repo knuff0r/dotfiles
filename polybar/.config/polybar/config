@@ -1,0 +1,162 @@
+[colors]
+transparent = #00000000
+white = #FFFFFF
+
+
+[bar/topleft]
+wm-name = i3
+#wm-restack = i3
+monitor = HDMI-A-0
+width = 100%
+height = 30
+background = {$colors.transparent}
+foreground = {$colors.white}
+enable-ipc = true
+
+font-0 = Bitstream Vera Sans:size=10:weight=bold
+font-1 = FontAwesome:size=9
+font-2 = IEC symbols Unicode:size=9
+font-3 = Bitstream Vera Sans:size=9:weight=bold
+font-4 = Unifont 
+
+padding-right = 5
+module-margin-right = 3
+modules-center = i3
+modules-right = weather date
+
+[bar/topright]
+wm-name = i3
+monitor = DVI-D-0
+width = 100%
+height = 30
+background = {$colors.transparent}
+foreground = {$colors.white}
+enable-ipc = true
+
+font-0 = Bitstream Vera Sans:size=10:weight=bold
+font-1 = FontAwesome:size=9
+font-2 = IEC symbols Unicode:size=9
+font-3 = Bitstream Vera Sans:size=9:weight=bold
+font-4 = Unifont 
+
+padding-right = 5
+modules-center = i3 
+modules-left = downspeed backup filesystem
+tray-position = right
+
+
+[module/date]
+type = internal/date
+#date = %%{F#FFF}%Y-%m-%d%%{F-}  %%{F#FFF}%H:%M:%S%%{F-}
+date = %{F#999} %a %d %b %{F#FFF} %H:%M%{F#AAA}:%S %{F-}
+#date-alt = %%{F#fff}%A, %d %B %Y  %%{F#fff}%H:%M%%{F#666}%%{F#fba922}%S%%{F-}
+
+[module/i3]
+type = internal/i3
+pin-workspaces = true
+
+
+#ws-icon-[0-9]+ = icon
+
+#web: chrome f268
+ws-icon-1 = 1;
+#code: f120
+ws-icon-2 = 2;
+#term: f121
+ws-icon-3 = 3;
+#mail: f0e0
+ws-icon-4 = 4;
+
+
+#f26c
+#ws-icon-4 = 4;
+ws-icon-5 = 5;
+ws-icon-6 = 6;
+ws-icon-7 = 7;
+ws-icon-8 = 8;
+ws-icon-9 = 9;
+ws-icon-0 = 0;
+
+
+label-focused = %icon% 
+label-focused-foreground = #ffffff
+#label-focused-background = #773f3f3f
+#label-focused-underline = #c9665e
+label-focused-padding = 3
+
+label-unfocused = %icon%
+label-unfocused-foreground = #999
+label-unfocused-padding = 3
+
+label-visible = %icon%
+#label-visible-underline = #FFFFFF
+label-visible-foreground = #ffffff
+label-visible-padding = 3
+
+label-urgent = %icon%
+label-urgent-foreground = #FFFFFF
+label-urgent-background = #bd2c40
+label-urgent-padding = 3
+
+
+[module/downspeed]
+type = custom/script
+exec = /usr/local/bin/mon_net
+interval = 1
+format-padding = 1
+#f0ab
+label = %{F#CCC}%{T4}  %output% %{T-}%{F-}
+
+[module/backup]
+type = custom/script
+exec = [[ -f /var/run/rsnapshot.pid ]] && echo "" || echo ""
+interval = 5
+format-padding = 1
+#f0ab
+label = %{F#FFF}%{T4} %output% %{T-}%{F-}
+
+[module/filesystem]
+type = internal/fs
+
+; Mountpoints to display
+ mount-0 = /
+
+; ; Available tokens:
+; ;   %mountpoint%
+; ;   %type%
+; ;   %fsname%
+; ;   %percentage_free%
+; ;   %percentage_used%
+; ;   %total%
+; ;   %free%
+; ;   %used%
+; ; Default: %mountpoint% %percentage_free%%
+
+ label-mounted-foreground = #DDDDDD
+ label-mounted =  %free% 
+# label-mounted = %{F#fff}%mountpoint%: %percentage_free%% of %total% %{F-}
+;
+; ; Available tokens:
+; ;   %mountpoint%
+; ; Default: %mountpoint% is not mounted
+ label-unmounted = %mountpoint%: not mounted
+ label-unmounted-foreground = #55
+
+[module/pkg]
+type = custom/script
+interval = 1200
+format = <label>
+label-foreground = #FFFFFF
+label = %output:0:30%
+exec = .config/polybar/pkg.sh
+exec-if = "ping -q -w 2 -c 1 176.34.135.167 > /dev/null"
+
+[module/weather]
+type = custom/script
+interval=1800
+exec = IconicWeather "EUR|DE|GM002|FORCHHEIM"
+label = %{F#EEE} %output% %{F-}
+
+
+
+

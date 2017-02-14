@@ -31,6 +31,12 @@ set $darkwhite   #a89984
 # set $background  #000000
 set $transparent #1d202100
 
+set $bg-color    #2f343f
+set $inactive-bg-color   #2f343f
+set $text-color          #f3f4f5
+set $inactive-text-color #676E7D
+set $urgent-bg-color     #E53935
+
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below. ISO 10646 = Unicode
 
@@ -88,7 +94,17 @@ bindsym $mod+Shift+q kill
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
-bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --entry-type=filename
+
+#bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --entry-type=filename
+bindsym $mod+d exec rofi -show run -lines 3 -eh 2 -auto-select -width 100 -padding 800 -fake-transparency -bw 0 -hide-scrollbar
+
+
+#scratchpad
+## Make the currently focused window a scratchpad
+bindsym $mod+Shift+minus move scratchpad
+#
+## Show the first scratchpad window
+bindsym $mod+minus scratchpad show
 
 # change focus
 bindsym $mod+h focus left
@@ -141,16 +157,22 @@ bindsym $mod+a focus parent
 #bindsym $mod+d focus child
 
 # switch to workspace
-bindsym $mod+1 workspace 1
-bindsym $mod+2 workspace 2
-bindsym $mod+3 workspace 3
-bindsym $mod+4 workspace 4
+#web
+bindsym $mod+1 workspace 1 
+#term
+bindsym $mod+2 workspace 2 
+#code
+bindsym $mod+3 workspace 3 
+#mail
+bindsym $mod+4 workspace 4 
 bindsym $mod+5 workspace 5
 bindsym $mod+6 workspace 6
 bindsym $mod+7 workspace 7
 bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
+
+bindsym $mod+n exec --no-startup-id ~/.i3/empty_ws.sh
 
 bindsym $Alt+Tab workspace back_and_forth
 
@@ -167,6 +189,25 @@ bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
 
 bindsym $mod+x move workspace to output right
+
+#workspace to specific screen
+workspace 1 output DVI-D-0
+workspace 2 output HDMI-A-0
+workspace 3 output HDMI-A-0
+workspace 4 output DVI-D-0
+
+
+#assingments
+assign [class="Chromium"] 1
+for_window [class="Chromium"] focus
+assign [class="URxvt"] 2
+for_window [class="URxvt"] focus
+assign [class="jetbrains-idea"] 3
+for_window [class="jetbrains-idea"] focus
+assign [class="Thunderbird"] 4
+for_window [class="Thunderbird"] focus
+
+for_window [class="Tilda"] floating enable
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -201,25 +242,28 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-bar {
-   	status_command i3blocks
-   	i3bar_command i3bar 
-
-
-    colors {
-        statusline         $white
-        background         $transparent
-        separator          $yellow
-
-					#####   BORDER       BACKGROUND   TEXT
-        focused_workspace  $transparent $transparent $yellow
-        inactive_workspace $transparent $transparent $white
-        active_workspace   $transparent $transparent $white
-        urgent_workspace   $darkred     $darkred     $transparent
-        binding_mode       $transparent $transparent $yellow
-    }
-
-}
+#
+#bar {
+#    status_command i3blocks
+#
+#   	i3bar_command i3bar 
+#
+#
+#
+#    colors {
+#        statusline         $white
+#        background         $transparent
+#        separator          $yellow
+#
+#					#####   BORDER       BACKGROUND   TEXT
+#       focused_workspace  $transparent $transparent $yellow
+#       inactive_workspace $transparent $transparent $white
+#        active_workspace   $transparent $transparent $white
+#        urgent_workspace   $darkred     $darkred     $transparent
+#        binding_mode       $transparent $transparent $yellow
+#    }
+##
+#}
 
 ## Manual management of external displays
 # Set the shortcuts and what they do
@@ -240,7 +284,9 @@ bindsym $mod+odiaeresis mode "$mode_display"
 #AUTOSTART
 
 exec --no-startup-id compton -b
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+exec --no-startup-id tilda
 exec --no-startup-id exec xautolock -detectsleep -time 10 -locker "lock" -notify 30 -notifier "notify-send -u critical -t 5000 -- 'Locking screen in 30 seconds'"
-exec_always --no-startup-id dualwp
+exec_always --no-startup-id dualwp.sh
 
 
