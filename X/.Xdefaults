@@ -1,0 +1,98 @@
+!!! URxvt resources start here
+
+! Colors
+
+*background:            [85]#000000
+*foreground:            #FFFFFF
+*fading:                40
+*fadeColor:             #000000
+*cursorColor:           #33FF33
+*pointerColorBackground:#99FF33
+*pointerColorForeground:#000000
+
+
+!! blacks: Black / Dark grey
+*color0:                #000000
+*color8:                #3D3D3D
+!!! reds: Strong red / Light brilliant red
+*color1:                #B80000
+*color9:                #FF3333
+!!! greens: Light brilliant green / Light brilliant chartreuse green
+*color2:                #33FF33
+*color10:               #99FF33
+!!! yellows: Light brilliant orange / Light brilliant yellow
+*color3:                #FF9933
+*color11:               #FFFF33
+!!! blues: Light brilliant blue / Light brilliant azure
+*color4:                #3333FF
+*color12:               #3399FF
+!!! magentas: Light brilliant magenta / Light brilliant violet
+*color5:                #FF33FF
+*color13:               #9933FF
+!!! cyans: Light brilliant cyan / Very light cyan
+*color6:                #33FFFF
+*color14:               #99FFFF
+!!! whites: Cosmic latte / White
+*color7:                #FFF8E7
+*color15:               #FFFFFF
+
+!Xft*dpi:                96
+Xft*antialias:          true
+Xft*hinting:            full
+
+! Fonts
+!URxvt.font:  xft:DejaVu Sans Mono:pixelsize=12
+urxvt*font:   xft:Bitstream Vera Sans Mono:size=10
+#urxvt*font:   xft:Font Awesome
+
+URxvt.skipBuiltinGlyphs: true
+
+! Scrolling
+URxvt.scrollBar: false
+!URxvt.scrollstyle: plain
+!URxvt.thickness: 2
+!URxvt.scrollBar_right: true
+!URxvt.scrollTtyOutput: true
+!URxvt.scrollWithBuffer: false
+!URxvt.scrollTtyKeypress: true
+URxvt.saveLines: 1000
+
+! Misc
+URxvt.title: urxvt
+URxvt.print-pipe: cat > $(TMPDIR=$HOME mktemp urxvt.XXXXXX)
+URxvt.internalBorder: 0
+URxvt.externalBorder: 0
+URxvt.tripleclickwords: true
+URxvt.cursorBlink: true
+URxvt.cursorUnderline: true
+!URxvt.chdir: /home/whef
+#URxvt.inheritPixmap: true
+#URxvt.transparent: true
+! URxvt*shading: 0 to 99 darkens, 101 to 200 lightens
+#URxvt.shading: 15
+URxvt.depth: 32
+
+! Extensions
+URxvt.perl-ext-common: default,matcher
+URxvt.urlLauncher: /usr/bin/chromium
+URxvt.matcher.button: 1
+
+
+
+!!! URxvt resources end
+! ------------------------------------------------------------------------------
+! ! ROFI Color theme
+! ! User: leofa
+! ! Copyright: 2017 leofa
+! ! ------------------------------------------------------------------------------
+! ! "Color scheme for normal row" Set from: File
+!rofi.color-normal:                   argb:0383c4a, #c4cbd4, argb:96404552, #4084d6, #f9f9f9 9575cd
+ rofi.color-normal:                   argb:3f343f, #FFFFFF, argb:404552, argb:3f343f, #3f68bd
+! ! "Color scheme for urgent row" Set from: File
+ rofi.color-urgent:                   argb:02d303b, #FFFFFF, argb:2d303b, argb:3f343f, #f9f9f9
+! ! "Color scheme for active row" Set from: File
+ rofi.color-active:                   argb:02d303b, #4143ca, argb:2d303b, argb:3f343f, #fF
+! ! "Color scheme window" Set from: File
+ rofi.color-window:                   argb:dd3f343f, #FFFFFF, argb:000000
+! ! "Separator style (none, dash, solid)" Set from: XResources
+ rofi.separator-style:                none
