@@ -154,7 +154,7 @@ exec-if = "ping -q -w 2 -c 1 176.34.135.167 > /dev/null"
 [module/weather]
 type = custom/script
 interval=1800
-exec = IconicWeather "EUR|DE|GM002|FORCHHEIM"
+exec = iconic_weather "EUR|DE|GM002|FORCHHEIM"
 label = %{F#EEE} %output% %{F-}
 
 
