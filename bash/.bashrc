@@ -28,7 +28,7 @@ PS1='\[\033[1;32m\]\u\[\033[0m\]@\[\033[0;32m\]\h:\[\033[0;36m\]\W \[\033[1;32m\
 
 export PATH=$PATH:/opt/android-sdk/tools/:/opt/android-sdk/platform-tools/
 #export PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
-export PATH=$PATH:/usr/local/bin
+export PATH="$PATH:$HOME/bin"
 
 
 export EDITOR=vim
