@@ -58,29 +58,26 @@ gaps outer 0
 floating_modifier $mod
 
 # custom keybindings
-bindsym XF86AudioRaiseVolume exec raiseVolume
-bindsym XF86AudioLowerVolume exec lowerVolume 
-bindsym XF86AudioMute exec toggleMute
+bindsym XF86AudioRaiseVolume exec scripts/raiseVolume.sh
+bindsym XF86AudioLowerVolume exec scripts/lowerVolume.sh
+bindsym XF86AudioMute exec scripts/toggleMute.sh
 bindsym XF86AudioPlay exec mpc -h pi toggle
 bindsym XF86AudioNext exec mpc -h pi next
 bindsym XF86AudioPrev exec mpc -h pi prev
 bindsym XF86AudioStop exec mpc -h pi stop
 
-bindsym XF86Sleep exec lock && sudo sleepnlock
-bindsym XF86Calculator exec toggleCal 
+bindsym XF86Sleep exec scripts/lock.sh && sudo scripts/sleepnlock.sh
+bindsym $mod+F7 exec scripts/lock.sh && sudo scripts/sleepnlock.sh
+bindsym $mod+Pause exec scripts/lock.sh
 
+bindsym XF86Calculator exec scripts/toggleCal.sh
 bindsym XF86Mail exec thunderbird 
 bindsym XF86HomePage exec chromium 
 
-bindsym $mod+Pause exec lock
-#bindsym $mod+Pause exec i3lock-fancy
 
 bindsym Print exec scrot 
 bindsym $mod+Print exec scrot -u 
 bindsym $mod+Shift+Print exec scrot -s 
-
-bindsym $mod+F7 exec lock && sudo sleepnlock
-bindsym $mod+F9 exec toggleSoundScr
 
 
 # start a terminal
@@ -172,7 +169,7 @@ bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
 
-bindsym $mod+n exec --no-startup-id ~/.i3/empty_ws.sh
+bindsym $mod+n exec --no-startup-id scripts/empty_ws.sh
 
 bindsym $Alt+Tab workspace back_and_forth
 
@@ -287,6 +284,6 @@ exec --no-startup-id compton -b
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 exec --no-startup-id tilda
 exec --no-startup-id exec xautolock -detectsleep -time 10 -locker "lock" -notify 30 -notifier "notify-send -u critical -t 5000 -- 'Locking screen in 30 seconds'"
-exec_always --no-startup-id dualwp.sh
+exec_always --no-startup-id scripts/dualwp.sh
 
 
