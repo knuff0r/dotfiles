@@ -18,7 +18,6 @@ alias gparted='sudo gpartedbin &'
 alias ripcd='abcde -o flac -Mx'
 alias updateqnap='rsync -av --delete --progress /mnt/core/music/Music/ /mnt/qnap/Music/'
 alias backupmusic='XZ_OPT=-9 tar cJf music.bak.tar.xz /mnt/core/music/Music'
-alias transcode=ffmpeg_transcode
 alias homestead='function __homestead() { (cd ~/Homestead && vagrant $*); unset -f __homestead; }; __homestead'
 #alias cp='acp -g'
 
@@ -35,15 +34,12 @@ export EDITOR=vim
 export TERMINAL=urxvtc
 export BROWSER=chromium
 
+export WORKON_HOME="~/.virtualenvs"
+source "/usr/bin/virtualenvwrapper.sh"
+export DJANGO_SETTINGS_MODULE=bidhot.settings_local
+
 testmic() {
     arecord -vvv -f dat /dev/null
-}
-
-ffmpeg_transcode(){
-    filename=$(basename "$1")
-    extension="${filename##*.}"
-    filename="${filename%.*}"
-    ffmpeg -i $1 -map 0 -c copy -c:v libx264 -preset slow -tune film -crf 19 $filename.transc.$extension 
 }
 
 backupsd(){

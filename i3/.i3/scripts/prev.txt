@@ -1,0 +1,2 @@
+playlist index -1
+exit
