@@ -43,7 +43,6 @@ Xft*hinting:            full
 ! Fonts
 !URxvt.font:  xft:DejaVu Sans Mono:pixelsize=12
 urxvt*font:   xft:Bitstream Vera Sans Mono:size=10
-#urxvt*font:   xft:Font Awesome
 
 URxvt.skipBuiltinGlyphs: true
 
@@ -66,10 +65,10 @@ URxvt.tripleclickwords: true
 URxvt.cursorBlink: true
 URxvt.cursorUnderline: true
 !URxvt.chdir: /home/whef
-#URxvt.inheritPixmap: true
-#URxvt.transparent: true
+!URxvt.inheritPixmap: true
+!URxvt.transparent: true
 ! URxvt*shading: 0 to 99 darkens, 101 to 200 lightens
-#URxvt.shading: 15
+!URxvt.shading: 15
 URxvt.depth: 32
 
 ! Extensions
@@ -87,12 +86,12 @@ URxvt.matcher.button: 1
 ! ! ------------------------------------------------------------------------------
 ! ! "Color scheme for normal row" Set from: File
 !rofi.color-normal:                   argb:0383c4a, #c4cbd4, argb:96404552, #4084d6, #f9f9f9 9575cd
- rofi.color-normal:                   argb:3f343f, #FFFFFF, argb:404552, argb:3f343f, #3f68bd
-! ! "Color scheme for urgent row" Set from: File
- rofi.color-urgent:                   argb:02d303b, #FFFFFF, argb:2d303b, argb:3f343f, #f9f9f9
-! ! "Color scheme for active row" Set from: File
- rofi.color-active:                   argb:02d303b, #4143ca, argb:2d303b, argb:3f343f, #fF
-! ! "Color scheme window" Set from: File
- rofi.color-window:                   argb:dd3f343f, #FFFFFF, argb:000000
-! ! "Separator style (none, dash, solid)" Set from: XResources
- rofi.separator-style:                none
+! !rofi.color-normal:                   argb:3f343f, #FFFFFF, argb:404552, argb:3f343f, #3f68bd
+!! ! "Color scheme for urgent row" Set from: File
+! !rofi.color-urgent:                   argb:02d303b, #FFFFFF, argb:2d303b, argb:3f343f, #f9f9f9
+!!! "Color scheme for active row" Set from: File
+! !rofi.color-active:                   argb:02d303b, #4143ca, argb:2d303b, argb:3f343f, #fF
+!!! "Color scheme window" Set from: File
+! !rofi.color-window:                   argb:dd3f343f, #FFFFFF, argb:000000
+!!! "Separator style (none, dash, solid)" Set from: XResources
+rofi.separator-style: none

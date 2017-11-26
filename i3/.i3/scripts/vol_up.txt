@@ -1,0 +1,2 @@
+sebastian mixer volume +5
+exit

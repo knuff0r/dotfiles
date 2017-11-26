@@ -20,6 +20,7 @@ alias updateqnap='rsync -av --delete --progress /mnt/core/music/Music/ /mnt/qnap
 alias backupmusic='XZ_OPT=-9 tar cJf music.bak.tar.xz /mnt/core/music/Music'
 alias homestead='function __homestead() { (cd ~/Homestead && vagrant $*); unset -f __homestead; }; __homestead'
 #alias cp='acp -g'
+alias fauvpn='sudo echo Poo.y6th | sudo openconnect -u id06ezen --authgroup=FAU-Fulltunnel -passwd-on-stdin vpn.fau.de'
 
 
 
@@ -36,7 +37,8 @@ export BROWSER=chromium
 
 export WORKON_HOME="~/.virtualenvs"
 source "/usr/bin/virtualenvwrapper.sh"
-export DJANGO_SETTINGS_MODULE=bidhot.settings_local
+
+#export DJANGO_SETTINGS_MODULE=bidhot.settings_local
 
 testmic() {
     arecord -vvv -f dat /dev/null
@@ -48,3 +50,14 @@ backupsd(){
 }
 
 export PATH="$PATH:$HOME/.config/composer/vendor/bin"
+
+# save path on cd
+function cd {
+    builtin cd $@
+    pwd > ~/.last_dir
+}
+
+# restore last saved path
+if [ -f ~/.last_dir ]
+    then cd `cat ~/.last_dir`
+fi

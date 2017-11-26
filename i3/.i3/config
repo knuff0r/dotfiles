@@ -58,19 +58,19 @@ gaps outer 0
 floating_modifier $mod
 
 # custom keybindings
-bindsym XF86AudioRaiseVolume exec ~/.i3/scripts/raiseVolume.sh
-bindsym XF86AudioLowerVolume exec ~/.i3/scripts/lowerVolume.sh
+bindsym XF86AudioRaiseVolume exec nc lms 9090 < ~/.i3/scripts/vol_up.txt
+bindsym XF86AudioLowerVolume exec nc lms 9090 < ~/.i3/scripts/vol_down.txt
 bindsym XF86AudioMute exec ~/.i3/scripts/toggleMute.sh
 #bindsym XF86AudioPlay exec mpc -h pi toggle #mpd 
-bindsym XF86AudioPlay exec nc pi 9090 < ~/.i3/scripts/pause.txt
+bindsym XF86AudioPlay exec nc lms 9090 < ~/.i3/scripts/pause.txt
 #bindsym XF86AudioNext exec mpc -h pi next
-bindsym XF86AudioNext exec nc pi 9090 < ~/.i3/scripts/next.txt
-bindsym XF86AudioPrev exec nc pi 9090 < ~/.i3/scripts/prev.txt
+bindsym XF86AudioNext exec nc lms 9090 < ~/.i3/scripts/next.txt
+bindsym XF86AudioPrev exec nc lms 9090 < ~/.i3/scripts/prev.txt
 #bindsym XF86AudioPrev exec mpc -h pi prev
-bindsym XF86AudioStop exec mpc -h pi stop
+#bindsym XF86AudioStop exec mpc -h pi stop
 
-bindsym XF86Sleep exec ~/.i3/scripts/lock.sh && sudo ~/.i3/scripts/sleepnlock.sh
-bindsym $mod+F7 exec ~/.i3/scripts/lock.sh && sudo ~/.i3/scripts/sleepnlock.sh
+#bindsym XF86Sleep exec sudo ~/.i3/scripts/trysleep.sh
+bindsym $mod+F7 exec sudo ~/.i3/scripts/trysleep.sh
 bindsym $mod+Pause exec ~/.i3/scripts/lock.sh
 
 bindsym XF86Calculator exec ~/.i3/scripts/toggleCal.sh
@@ -192,23 +192,29 @@ bindsym $mod+Shift+0 move container to workspace 10
 bindsym $mod+x move workspace to output right
 
 #workspace to specific screen
-workspace 1 output DVI-D-0
+workspace 1 output HDMI-A-0
 workspace 2 output HDMI-A-0
 workspace 3 output HDMI-A-0
-workspace 4 output DVI-D-0
+workspace 4 output HDMI-A-0
+workspace 5 output HDMI-A-0
+workspace 6 output DVI-D-0
+workspace 7 output DVI-D-0
+workspace 8 output DVI-D-0
+workspace 9 output DVI-D-0
+workspace 10 output DVI-D-0
 
 
 #assingments
-assign [class="Chromium"] 1
-for_window [class="Chromium"] focus
-assign [class="URxvt"] 2
-for_window [class="URxvt"] focus
-assign [class="jetbrains-idea"] 3
-for_window [class="jetbrains-idea"] focus
-assign [class="Thunderbird"] 4
-for_window [class="Thunderbird"] focus
+#assign [class="Chromium"] 1
+#for_window [class="Chromium"] focus
+#assign [class="URxvt"] 2
+#for_window [class="URxvt"] focus
+#assign [class="jetbrains-idea"] 3
+#for_window [class="jetbrains-idea"] focus
+#assign [class="Thunderbird"] 4
+#for_window [class="Thunderbird"] focus
 
-for_window [class="Tilda"] floating enable
+#for_window [class="Tilda"] floating enable
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -243,7 +249,7 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-#
+
 #bar {
 #    status_command i3blocks
 #
@@ -257,13 +263,13 @@ bindsym $mod+r mode "resize"
 #        separator          $yellow
 #
 #					#####   BORDER       BACKGROUND   TEXT
-#       focused_workspace  $transparent $transparent $yellow
-#       inactive_workspace $transparent $transparent $white
+#      focused_workspace  $transparent $transparent $yellow
+#      inactive_workspace $transparent $transparent $white
 #        active_workspace   $transparent $transparent $white
 #        urgent_workspace   $darkred     $darkred     $transparent
 #        binding_mode       $transparent $transparent $yellow
 #    }
-##
+#
 #}
 
 
@@ -272,8 +278,8 @@ bindsym $mod+r mode "resize"
 
 exec --no-startup-id compton -b
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
-exec --no-startup-id exec xautolock -detectsleep -time 10 -locker "lock" -notify 30 -notifier "notify-send -u critical -t 5000 -- 'Locking screen in 30 seconds'"
-exec --no-startup-id $HOME/.i3/scripts/stay_alive.sh
+#exec --no-startup-id exec xautolock -detectsleep -time 10 -locker "lock" -notify 30 -notifier "notify-send -u critical -t 5000 -- 'Locking screen in 30 seconds'"
+#exec --no-startup-id $HOME/.i3/scripts/stay_alive.sh
 exec_always --no-startup-id ~/.i3/scripts/dualwp.sh
 #only one monitor:
 #feh --bg-scale --randomize ~/Pictures/Wallpaper/single
