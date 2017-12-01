@@ -22,9 +22,14 @@ alias homestead='function __homestead() { (cd ~/Homestead && vagrant $*); unset 
 #alias cp='acp -g'
 alias fauvpn='sudo echo Poo.y6th | sudo openconnect -u id06ezen --authgroup=FAU-Fulltunnel -passwd-on-stdin vpn.fau.de'
 
+parse_git_branch() {
+     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+}
 
 
-PS1='\[\033[1;32m\]\u\[\033[0m\]@\[\033[0;32m\]\h:\[\033[0;36m\]\W \[\033[1;32m\]\$ \[\033[0m\]'
+export PS1="\[\033[1;32m\]\u\[\033[0m\]@\[\033[0;32m\]\h:\[\033[0;36m\]\W\[\033[1;32m\]\$(parse_git_branch)\[\033[00m\]"
+#export PS1="\u@\h \W\[\033[32m\]\$(parse_git_branch)\[\033[00m\] $ "
+
 
 export PATH=$PATH:/opt/android-sdk/tools/:/opt/android-sdk/platform-tools/
 #export PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
@@ -53,11 +58,11 @@ export PATH="$PATH:$HOME/.config/composer/vendor/bin"
 
 # save path on cd
 function cd {
-    builtin cd $@
+    builtin cd "$@"
     pwd > ~/.last_dir
 }
 
 # restore last saved path
 if [ -f ~/.last_dir ]
-    then cd `cat ~/.last_dir`
+    then cd "`cat ~/.last_dir`"
 fi
