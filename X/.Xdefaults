@@ -76,6 +76,10 @@ URxvt.perl-ext-common: default,matcher
 URxvt.urlLauncher: /usr/bin/chromium
 URxvt.matcher.button: 1
 
+#URxvt.keysym.Shift-Control-V: eval:paste_clipboard
+#URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
+URxvt.perl-ext-common: selection-to-clipboard
+
 
 
 !!! URxvt resources end

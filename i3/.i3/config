@@ -62,7 +62,7 @@ bindsym XF86AudioRaiseVolume exec nc lms 9090 < ~/.i3/scripts/vol_up.txt
 bindsym XF86AudioLowerVolume exec nc lms 9090 < ~/.i3/scripts/vol_down.txt
 bindsym XF86AudioMute exec ~/.i3/scripts/toggleMute.sh
 #bindsym XF86AudioPlay exec mpc -h pi toggle #mpd 
-bindsym XF86AudioPlay exec nc lms 9090 < ~/.i3/scripts/pause.txt
+bindsym XF86AudioPlay exec nc lms 9090 < ~/.i3/scripts/togglePlayback.txt
 #bindsym XF86AudioNext exec mpc -h pi next
 bindsym XF86AudioNext exec nc lms 9090 < ~/.i3/scripts/next.txt
 bindsym XF86AudioPrev exec nc lms 9090 < ~/.i3/scripts/prev.txt
@@ -75,7 +75,8 @@ bindsym $mod+Pause exec ~/.i3/scripts/lock.sh
 
 bindsym XF86Calculator exec ~/.i3/scripts/toggleCal.sh
 bindsym XF86Mail exec thunderbird 
-bindsym XF86HomePage exec chromium 
+#bindsym XF86HomePage exec chromium 
+bindsym XF86HomePage exec firefox
 
 bindsym $mod+odiaeresis exec ~/.i3/scripts/monitor_layout.py
 
@@ -283,5 +284,4 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 exec_always --no-startup-id ~/.i3/scripts/dualwp.sh
 #only one monitor:
 #feh --bg-scale --randomize ~/Pictures/Wallpaper/single
-
 
