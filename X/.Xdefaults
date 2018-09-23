@@ -42,9 +42,12 @@ Xft*hinting:            full
 
 ! Fonts
 !URxvt.font:  xft:DejaVu Sans Mono:pixelsize=12
-urxvt*font:   xft:Bitstream Vera Sans Mono:size=10
+urxvt*font:   xft:Bitstream Vera Sans Mono:size=10,\
+xft:Source Code Pro:pixelsize=18:style=medium:antialias=true,
+!urxvt*font:   xft:Fira Code Sans Mono:size=10
+!URxvt*letterSpace: -2
 
-URxvt.skipBuiltinGlyphs: true
+!URxvt.skipBuiltinGlyphs: true
 
 ! Scrolling
 URxvt.scrollBar: false
@@ -98,4 +101,4 @@ URxvt.perl-ext-common: selection-to-clipboard
 !!! "Color scheme window" Set from: File
 ! !rofi.color-window:                   argb:dd3f343f, #FFFFFF, argb:000000
 !!! "Separator style (none, dash, solid)" Set from: XResources
-rofi.separator-style: none
+!!!rofi.separator-style: none

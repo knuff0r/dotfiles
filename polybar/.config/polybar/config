@@ -1,47 +1,38 @@
 [colors]
 transparent = #00000000
 white = #FFFFFF
+ 
+[bar/base]
+font-0 = Fira Sans:size=11:weight=bold
+font-1 = FontAwesome:size=12
+#font-2 = IEC symbols Unicode:size=9
+#font-3 = Bitstream Vera Sans:size=9:weight=bold
+#font-4 = Unifont 
+wm-name = i3
+#wm-restack = i3
+width = 100%
+height = 30
+background = {$colors.transparent}
+foreground = {$colors.white}
+modules-center = i3
 
 
 [bar/topleft]
-wm-name = i3
-#wm-restack = i3
+inherit = bar/base
 monitor = HDMI-A-0
-width = 100%
-height = 30
-background = {$colors.transparent}
-foreground = {$colors.white}
 enable-ipc = true
-
-font-0 = Bitstream Vera Sans:size=10:weight=bold
-font-1 = FontAwesome:size=9
-font-2 = IEC symbols Unicode:size=9
-font-3 = Bitstream Vera Sans:size=9:weight=bold
-font-4 = Unifont 
 
 padding-right = 5
 module-margin-right = 3
-modules-center = i3
 modules-right = weather date
 
 [bar/topright]
-wm-name = i3
+inherit = bar/base
 monitor = DVI-D-0
-width = 100%
-height = 30
-background = {$colors.transparent}
-foreground = {$colors.white}
 enable-ipc = true
 
-font-0 = Bitstream Vera Sans:size=10:weight=bold
-font-1 = FontAwesome:size=9
-font-2 = IEC symbols Unicode:size=9
-font-3 = Bitstream Vera Sans:size=9:weight=bold
-font-4 = Unifont 
-
 padding-right = 5
-modules-center = i3 
-modules-left = downspeed backup filesystem
+modules-left = downspeed vpn backup filesystem
 tray-position = right
 
 
@@ -110,6 +101,16 @@ interval = 1
 format-padding = 1
 #f0ab
 label = %{F#CCC}%{T4}  %output% %{T-}%{F-}
+
+[module/vpn]
+type = custom/script
+exec = ~/.config/polybar/scripts/vpn.py
+click-middle = sudo pvpn -d 
+click-left = sudo pvpn -f 
+interval = 5
+format-padding = 1
+#label = %{F#FCEDC2}%{T4}  %output% %{T-}%{F-}
+#label = %{F#FCEDC2}%{T4} %output% %{T-}%{F-}
 
 [module/backup]
 type = custom/script

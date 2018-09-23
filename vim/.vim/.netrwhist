@@ -1,10 +1,2 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =8
-let g:netrw_dirhist_1='/home/sebastian/Projects/Idea/Spring/cbr/.git'
-let g:netrw_dirhist_2='/home/sebastian/.ssh'
-let g:netrw_dirhist_3='/home/sebastian/Documents/uni/compiler/coden/est_sknauerueb_um79uveb/bin/interpreter'
-let g:netrw_dirhist_4='/home/sebastian/dotfiles/polybar'
-let g:netrw_dirhist_5='/usr/local/bin'
-let g:netrw_dirhist_6='/home/sebastian/.vim'
-let g:netrw_dirhist_7='/home/sebastian/.config/polybar'
-let g:netrw_dirhist_8='/home/sebastian/dotfiles/i3/.i3/scripts'
+let g:netrw_dirhist_cnt =0

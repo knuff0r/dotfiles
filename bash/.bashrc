@@ -51,8 +51,6 @@ export BROWSER=firefox
 export WORKON_HOME="~/.virtualenvs"
 source "/usr/bin/virtualenvwrapper.sh"
 
-#export DJANGO_SETTINGS_MODULE=bidhot.settings_local
-
 testmic() {
     arecord -vvv -f dat /dev/null
 }
@@ -65,8 +63,6 @@ backupsd(){
 splitimage(){
     magick $1 -crop 50%x100% +repage split.jpg
 }
-
-export PATH="$PATH:$HOME/.config/composer/vendor/bin"
 
 # save path on cd
 function cd {
