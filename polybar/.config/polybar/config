@@ -32,6 +32,7 @@ monitor = DVI-D-0
 enable-ipc = true
 
 padding-right = 5
+modules-right = win
 modules-left = downspeed vpn backup filesystem
 tray-position = right
 
@@ -99,8 +100,13 @@ type = custom/script
 exec = ~/.config/polybar/scripts/mon_net.sh
 interval = 1
 format-padding = 1
-#f0ab
 label = %{F#CCC}%{T4}  %output% %{T-}%{F-}
+
+[module/win]
+type = custom/script
+exec = echo "switching to windows..."
+click-left = s2disk 
+label = %{F#CCC}%{T4}   %{T-}%{F-}
 
 [module/vpn]
 type = custom/script
@@ -117,7 +123,6 @@ type = custom/script
 exec = [[ -f /var/run/rsnapshot.pid ]] && echo "" || echo ""
 interval = 5
 format-padding = 1
-#f0ab
 label = %{F#FFF}%{T4} %output% %{T-}%{F-}
 
 [module/filesystem]

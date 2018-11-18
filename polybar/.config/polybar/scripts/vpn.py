@@ -4,9 +4,9 @@ out = subprocess.check_output(["sudo", "pvpn", "status"]).decode("utf-8")
 out=out.splitlines()[1]
 running = out.split(':')[1]
 is_running = running == " Running"
-color="FCEDC2"
+color="d9534f"
 if is_running:
     color="B4FAB6"
 
-print("%{{F#{}}}%{{T4}}  {} %{{T-}}%{{F-}}".format(color, out))
+print("%{{F#{}}}%{{T4}}   %{{T-}}%{{F-}}".format(color))
 

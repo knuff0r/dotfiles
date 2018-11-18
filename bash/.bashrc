@@ -21,6 +21,7 @@ alias backupmusic='XZ_OPT=-9 tar cJf music.bak.tar.xz /mnt/core/music/Music'
 alias homestead='function __homestead() { (cd ~/Homestead && vagrant $*); unset -f __homestead; }; __homestead'
 #alias cp='acp -g'
 alias fauvpn='sudo echo Poo.y6th | sudo openconnect -u id06ezen --authgroup=FAU-Fulltunnel -passwd-on-stdin vpn.fau.de'
+alias windows='sudo s2disk'
 
 parse_git_branch() {
      git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
@@ -44,7 +45,8 @@ export PATH="$PATH:$HOME/.gem/ruby/2.5.0/bin"
 
 
 export EDITOR=vim
-export TERMINAL=urxvtc
+#export TERMINAL=urxvtc
+export TERMINAL=termite
 #export BROWSER=chromium
 export BROWSER=firefox
 
@@ -71,9 +73,9 @@ function cd {
 }
 
 # restore last saved path
-if [ -f ~/.last_dir ]
-    then cd "`cat ~/.last_dir`"
-fi
+#if [ -f ~/.last_dir ]
+#    then cd "`cat ~/.last_dir`"
+#fi
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
