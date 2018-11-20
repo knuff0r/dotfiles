@@ -51,6 +51,7 @@ font pango:Bitstream Vera Mono 12px
 
 #custom stuff
 for_window [class="^.*"] border pixel 0
+for_window [title="cmatrix"] fullscreen enable
 gaps inner 10
 gaps outer 0
 
@@ -73,8 +74,10 @@ bindsym XF86AudioPrev exec nc lms 9090 < ~/.i3/scripts/prev.txt
 bindsym $mod+F1 exec sudo ~/.i3/scripts/trysleep.sh
 bindsym $mod+Pause exec ~/.i3/scripts/lock.sh
 
+bindsym $mod+F2 exec matrix.sh
+
 bindsym XF86Calculator exec ~/.i3/scripts/toggleCal.sh
-bindsym XF86Mail exec thunderbird 
+bindsym XF86Mail exec mailspring 
 #bindsym XF86HomePage exec chromium 
 bindsym XF86HomePage exec firefox
 
@@ -279,6 +282,7 @@ bindsym $mod+r mode "resize"
 #AUTOSTART
 
 exec --no-startup-id compton -b
+exec --no-startup-id dunst -b
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 #exec --no-startup-id exec xautolock -detectsleep -time 10 -locker "lock" -notify 30 -notifier "notify-send -u critical -t 5000 -- 'Locking screen in 30 seconds'"
 #exec --no-startup-id $HOME/.i3/scripts/stay_alive.sh

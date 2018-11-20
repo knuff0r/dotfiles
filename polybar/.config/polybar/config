@@ -105,7 +105,7 @@ label = %{F#CCC}%{T4}  %output% %{T-}%{F-}
 [module/win]
 type = custom/script
 exec = echo "switching to windows..."
-click-left = s2disk 
+click-left = sudo s2disk 
 label = %{F#CCC}%{T4}   %{T-}%{F-}
 
 [module/vpn]
